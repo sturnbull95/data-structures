@@ -31,6 +31,20 @@ describe('linkedList', function() {
     expect(linkedList.head.value).to.equal(5);
   });
 
+  it('should remove anywhere from the list when removeHead is called with a variable and returns false if there is no value', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    linkedList.addToTail(8);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.removeHead()).to.equal(4);
+    expect(linkedList.removeHead(6)).to.equal(6);
+    expect(linkedList.removeHead(7)).to.equal(7);
+    expect(linkedList.removeHead(9)).to.equal(false);
+    expect(linkedList.head.value).to.equal(5);
+  });
+
   it('should return the value of the former head when removeHead is called', function() {
     linkedList.addToTail(4);
     expect(linkedList.removeHead()).to.equal(4);

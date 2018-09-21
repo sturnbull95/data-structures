@@ -45,7 +45,11 @@ var DblLinkedList = function(){
   };
 
   // Time complexity:  O(1)
-  dblList.removeHead = function(){
+  dblList.remove = function(){
+    if(arguments.length !== 0){
+      console.log()
+      return this.removeAnywhere(arguments[0]);
+    }
     var head = this.head;
     //console.log(head.value,'first')
     this.tail.next = this.head.next;
@@ -57,24 +61,22 @@ var DblLinkedList = function(){
   var start = this.head;
   var current = this.head.next;
   var count = 0;
-  console.log(current)
-  console.log(start.value);
-  if(start.value === value){
-    console.log('found from first');
-    return start.value;
-  }
-  else{
-    while(current && current !== start) {
-      count++
-      console.log(count)
-      console.log(current,current.next)
-      console.log('in whilelooop')
-      if(current.value === value) {
-        return current.value;
+  if(this.contains(value)){
+    if(start.value === value){
+      console.log('found from first');
+      return start.value;
+    }
+    else{
+      while(current && current !== start) {
+        count++
+        if(current.value === value) {
+          return current.value;
+        }
+        current = current.next;
       }
-      current = current.next;
     }
   }
+  return false;
   };
   dblList.find = function(value){
     var node = this.head;

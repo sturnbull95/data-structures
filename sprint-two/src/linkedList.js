@@ -18,27 +18,35 @@ var LinkedList = function(){
 
   // Time complexity:  O(1)
   list.removeHead = function(){
-    var head = this.head;
-    this.head = this.head.next;
-    return head.value;
+    if(arguments.length !== 0){
+      return this.removeAnywhere(arguments[0]);
+      //console.log(arguments);
+    } else{
+      var head = this.head;
+      this.head = this.head.next;
+      return head.value;
+    }
   };
 
   list.removeAnywhere = function(value){
     var prev;
     var node = this.head;
-    while(node){
-      if(node.value === value){
-        if(prev){
-          prev.next = node.next;
-        } else {
-          this.head = node.next;
+    if(this.contains(value)){
+      while(node){
+        if(node.value === value){
+          if(prev){
+            prev.next = node.next;
+          } else {
+            this.head = node.next;
+          }
+          break;
         }
-        break;
+        prev = node;
+        node = node.next;
       }
-      prev = node;
-      node = node.next;
+      return node.value;
     }
-    return node.value;
+    return false;
     //console.log(this.head.value);
   };
 
