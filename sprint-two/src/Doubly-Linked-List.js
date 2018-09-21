@@ -25,7 +25,6 @@ var DblLinkedList = function(){
   };
   dblList.addToHead = function(value){
   var node = new Node(value);
-  console.log(this,'this')
   if(!this.head) {
     this.head = node;
     //console.log(this.head,'nothing')
@@ -47,7 +46,6 @@ var DblLinkedList = function(){
   // Time complexity:  O(1)
   dblList.remove = function(){
     if(arguments.length !== 0){
-      console.log()
       return this.removeAnywhere(arguments[0]);
     }
     var head = this.head;
@@ -60,7 +58,6 @@ var DblLinkedList = function(){
   dblList.removeAnywhere = function(value){
   var start = this.head;
   var current = this.head.next;
-  var count = 0;
   if(this.contains(value)){
     if(start.value === value){
       console.log('found from first');
@@ -68,7 +65,6 @@ var DblLinkedList = function(){
     }
     else{
       while(current && current !== start) {
-        count++
         if(current.value === value) {
           return current.value;
         }
