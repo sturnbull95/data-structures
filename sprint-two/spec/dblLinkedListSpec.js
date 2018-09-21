@@ -47,7 +47,7 @@ describe('dblLinkedList', function() {
     expect(dblLinkedList.head.value).to.equal(4);
     expect(dblLinkedList.remove()).to.equal(4);
     expect(dblLinkedList.remove(6)).to.equal(6);
-    expect(dblLinkedList.remove(7)).to.equal(7);
+    expect(dblLinkedList.remove(8)).to.equal(8);
     expect(dblLinkedList.remove(9)).to.equal(false);
     expect(dblLinkedList.head.value).to.equal(5);
   });
