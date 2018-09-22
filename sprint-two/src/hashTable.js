@@ -3,7 +3,7 @@ var HashTable = function(){
   this._storage = LimitedArray(this._limit);
   this.count = 0;
 };
-
+//O(1)
 HashTable.prototype.insert = function(k, v){
   var index = getIndexBelowMaxForKey(k, this._limit);
   if (!this._storage.get(index)) {
@@ -28,7 +28,7 @@ HashTable.prototype.insert = function(k, v){
     this.adjustLimit(this._limit);
   }
 };
-
+// O(n) (of bucket) (if(no collisions then it is O(1)))
 HashTable.prototype.retrieve = function(k){
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
@@ -41,7 +41,7 @@ HashTable.prototype.retrieve = function(k){
     }
   }
 };
-
+//O(1)
 HashTable.prototype.remove = function(k){
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);

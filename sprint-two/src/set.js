@@ -22,7 +22,7 @@ setPrototype.set = function(item,value){
   this._storage[item] = value;
 };
 
-// Time complexity: O([].indexOf), O(n)
+// Time complexity: O(n)
 setPrototype.contains = function(item) {
   if(item in this._storage){
     return true;
@@ -30,7 +30,7 @@ setPrototype.contains = function(item) {
   return false;
 };
 
-// Time complexity: O([].indexOf), O(n)
+// Time complexity: O(n)
 setPrototype.remove = function(item) {
   if (this.contains(item)) {
     delete this._storage[item];
