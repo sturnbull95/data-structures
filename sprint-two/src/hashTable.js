@@ -23,7 +23,7 @@ HashTable.prototype.insert = function(k, v){
     bucket.push([k, v]);
   }
   this.count++;
-  if (this.count === (this._limit - 2)) {
+  if (this.count === (this._limit * 0.75)) {
     this._limit *= 2;
     this.adjustLimit(this._limit);
   }
@@ -50,7 +50,7 @@ HashTable.prototype.remove = function(k){
       if (bucket[i][0] === k) {
         bucket.splice(i, 1);
         this.count--;
-        if (this._limit > 8 && this.count < (this._limit/2 -2)) {
+        if (this._limit > 8 && this.count < (this._limit * 0.25)) {
           this._limit /= 2;
           this.adjustLimit(this._limit);
         }
@@ -67,7 +67,7 @@ HashTable.prototype.adjustLimit = function(newLimit) {
     if(bucket){
       adjustedStore = adjustedStore.concat(bucket);
     } else{
-      adjustedStore.concat([])
+      adjustedStore.concat([]);
     }
   });
   this._storage = LimitedArray(newLimit);

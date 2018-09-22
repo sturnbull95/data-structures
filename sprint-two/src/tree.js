@@ -15,15 +15,37 @@ var treeMethods = {};
 // Time complexity: O(1)
 treeMethods.addChild = function(value){
   var child = Tree(value);
-  if(this){
+
+  //if(this){
     child.parent = this;
     this.children.push(child);
-  } else{
-    child = this;
-  }
+  // } else{
+  //   child = this;
+  // }
   return true;
 };
-
+treeMethods.removeFromParent = function(node){
+  // if(!node.parent){
+  //   return this;
+  // } else{
+    console.log('BEFORE ', this.node);
+    if (this.value === node) {
+      if(this.value.children.length !== 0 ){
+        delete this.value.children;
+      }
+      delete this.value;
+      return this;
+    } else{
+      for(var i = 0; i < this.children.length; i++){
+        if(this.children[i].removeFromParent(node)){
+          delete this;
+        }
+      }
+    }
+    console.log('AFTER ',this);
+    return this;
+  //}
+};
 // Time complexity: O(n)
 treeMethods.contains = function(target){
   if (this.value === target) {

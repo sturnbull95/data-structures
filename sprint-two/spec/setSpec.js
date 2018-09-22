@@ -16,8 +16,17 @@ describe('set', function() {
   it('should add values to a set', function() {
     set.add('Susan Sarandon');
     set.add('Danny Glover');
+    set.add(1);
+    set.add({'a':'b'});
+    set.add([1,2,3,4,5,6]);
     expect(set.contains('Danny Glover')).to.equal(true);
     expect(set.contains('Susan Sarandon')).to.equal(true);
+    expect(set.contains({'a':'b'})).to.equal(true);
+    expect(set.get({'a':'b'})).to.eql({'a':'b'});
+    expect(set.get([1,2,3,4,5,6])).to.eql([1,2,3,4,5,6]);
+    expect(set.contains(1)).to.equal(true);
+    expect(set.contains('Not In Here')).to.equal(false);
+    expect(set.contains(2)).to.equal(false);
   });
   it('should reset values of a set and get values based on argument key', function() {
     set.add('Susan Sarandon');
