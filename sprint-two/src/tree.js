@@ -28,21 +28,20 @@ treeMethods.removeFromParent = function(node){
   // if(!node.parent){
   //   return this;
   // } else{
-    console.log('BEFORE ', this.node);
+    //console.log('BEFORE ', this.node);
     if (this.value === node) {
-      if(this.value.children.length !== 0 ){
+      if(this.children.length !== 0 ){
         delete this.value.children;
       }
       delete this.value;
       return this;
     } else{
       for(var i = 0; i < this.children.length; i++){
-        if(this.children[i].removeFromParent(node)){
-          delete this;
-        }
+        console.log(this.children[i])
+          //return this.removeFromParent(this.children[i].value);
       }
     }
-    console.log('AFTER ',this);
+    //console.log('AFTER ',this);
     return this;
   //}
 };

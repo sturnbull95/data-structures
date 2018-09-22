@@ -45,6 +45,23 @@ describe('linkedList', function() {
     expect(linkedList.head.value).to.equal(5);
   });
 
+  it('should add to anywhere in the list if addAnywhere is called and return false if first value not in list', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    linkedList.addToTail(8);
+    expect(linkedList.head.value).to.equal(4);
+    linkedList.addAnywhere(6,10);
+    expect(linkedList.addAnywhere(20,0)).to.equal(false);
+    expect(linkedList.contains(10)).to.equal(true);
+    expect(linkedList.removeHead()).to.equal(4);
+    expect(linkedList.removeHead(6)).to.equal(6);
+    expect(linkedList.removeHead(7)).to.equal(7);
+    expect(linkedList.removeHead(9)).to.equal(false);
+    expect(linkedList.head.value).to.equal(5);
+  });
+
   it('should return the value of the former head when removeHead is called', function() {
     linkedList.addToTail(4);
     expect(linkedList.removeHead()).to.equal(4);

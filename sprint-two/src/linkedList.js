@@ -16,6 +16,21 @@ var LinkedList = function(){
     return true;
   };
 
+  list.addAnywhere = function(afterVal,val) {
+    var node = Node(val);
+    var tmp = this.head;
+    while(tmp){
+      if(tmp.value === afterVal){
+        node.next = tmp.next;
+        tmp.next = node;
+        return true;
+      } else{
+        tmp = tmp.next;
+      }
+    }
+    return false;
+  };
+
   // Time complexity:  O(1)
   list.removeHead = function(){
     if(arguments.length !== 0){
