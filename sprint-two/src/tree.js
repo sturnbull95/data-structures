@@ -24,27 +24,27 @@ treeMethods.addChild = function(value){
   // }
   return true;
 };
-treeMethods.removeFromParent = function(node){
-  // if(!node.parent){
-  //   return this;
-  // } else{
-    //console.log('BEFORE ', this.node);
-    if (this.value === node) {
-      if(this.children.length !== 0 ){
-        delete this.value.children;
-      }
-      delete this.value;
-      return this;
-    } else{
-      for(var i = 0; i < this.children.length; i++){
-        console.log(this.children[i])
-          //return this.removeFromParent(this.children[i].value);
-      }
-    }
-    //console.log('AFTER ',this);
-    return this;
-  //}
-};
+// treeMethods.removeFromParent = function(node){
+//   // if(!node.parent){
+//   //   return this;
+//   // } else{
+//     //console.log('BEFORE ', this.node);
+//     if (this.value === node) {
+//       if(this.children.length !== 0 ){
+//         delete this.value.children;
+//       }
+//       delete this.value;
+//       return this;
+//     } else{
+//       for(var i = 0; i < this.children.length; i++){
+//         console.log(this.children[i])
+//           //return this.removeFromParent(this.children[i].value);
+//       }
+//     }
+//     //console.log('AFTER ',this);
+//     return this;
+//   //}
+// };
 // Time complexity: O(n)
 treeMethods.contains = function(target){
   if (this.value === target) {
